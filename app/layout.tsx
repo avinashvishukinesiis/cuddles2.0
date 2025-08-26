@@ -2,6 +2,16 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import localFont from 'next/font/local'
+import RootLayoutClient from "./RootLayoutClient";
+
+const ohno = localFont({
+  src: './Fonts/OhnoSoftieVariable.woff2',
+  variable: '--font-ohno',
+  display: 'swap',
+  // Because it’s a variable font, you don’t need to specify weight/style ranges
+})
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,11 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" className={`${ohno.className} ${geistSans.variable} ${geistMono.variable}`}>
+      <body className="antialiased font-ohno">
+        <RootLayoutClient >
+          {children}
+        </RootLayoutClient>
       </body>
     </html>
   );
