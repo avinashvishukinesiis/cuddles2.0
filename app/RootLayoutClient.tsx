@@ -1,5 +1,6 @@
 "use client";
 
+import FAQSection from "@/components/FAQ/Faq";
 import Footer from "@/components/Footer/Footer";
 import MotionWrapper from "@/components/MotionWrapper";
 import NavBar from "@/components/NavBar/Navbar";
@@ -24,6 +25,7 @@ export default function RootLayoutClient({ children }: RootLayoutClientProps) {
             <main className={`h-max min-h-[200px] md:min-h-[500px] ${shouldShowHeaderFooter ? "mt-[65px] md:mt-[81px]" : ""} box-border`}>
                 <MotionWrapper>
                     {children}
+                    <FAQSection/>
                     <Footer />
                 </MotionWrapper>
             </main>

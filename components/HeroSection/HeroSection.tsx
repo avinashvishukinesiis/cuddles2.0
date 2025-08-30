@@ -3,7 +3,7 @@ import { FiArrowRight } from "react-icons/fi";
 
 const HeroSection = () => {
     return (
-        <section className='relative'>
+        <section className='relative h-max'>
             {/* Hero with background */}
             <div className="w-full h-[80vh] hero-bg bg-cover bg-center bg-no-repeat relative overflow-hidden">
                 {/* Responsive Wave */}
@@ -26,7 +26,7 @@ const HeroSection = () => {
                 <div className='w-full px-4 md:px-0 md:w-[60vw] flex flex-col gap-8'>
                     <h2 className='font-extrabold text-3xl md:text-7xl md:text-[#9769A5] text-white text-center'><span className='relative'><img src="./star.svg" alt="plane vector" className='absolute md:right-36 md:bottom-4 right-12 bottom-1' />Where</span> imagination takes <br /> <span className='relative'>flight. <img src="./plane_vector.svg" alt="plane vector" className='absolute md:left-40 md:top-4 left-16 top-2' /></span></h2>
                     <p className='text-[18px] font-medium text-center md:text-[#9769A5] text-white'>At Cuddles Preschool, we believe that every child’s journey begins with a sense of wonder, joy, and discovery. We are more than just a place for early education, we’re a second home where children feel loved, valued, and inspired to explore the world around them.</p>
-                    <div className='flex gap-8 justify-center'>
+                    <div className='flex flex-col md:flex-row md:gap-8 gap-3 justify-center px-8 md:px-0'>
                         <button className='bg-[#9769A5] px-6 py-4 text-white text-[18px] font-extrabold rounded-md flex justify-center items-center gap-4 cursor-pointer'>Schedule A Visit <FiArrowRight size={20}/></button>
                         <button className='bg-white border-2 px-6 py-4 border-[#9769A5]  text-[#9769A5] text-[18px] font-extrabold rounded-md cursor-pointer'>Explore Programs</button>
                     </div>
