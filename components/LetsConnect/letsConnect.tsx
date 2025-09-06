@@ -31,8 +31,8 @@ export default function LetsConnect() {
 
     return (
         <section>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#9769A5" fillOpacity="1" d="M0,192L34.3,197.3C68.6,203,137,213,206,208C274.3,203,343,181,411,186.7C480,192,549,224,617,250.7C685.7,277,754,299,823,277.3C891.4,256,960,192,1029,176C1097.1,160,1166,192,1234,218.7C1302.9,245,1371,267,1406,277.3L1440,288L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
-            <div className="h-max bg-[#9769A5] pb-14">
+            <svg xmlns="http://www.w3.org/2000/svg" className="relative -mb-1" viewBox="0 0 1440 320"><path fill="#9769A5" fillOpacity="1" d="M0,192L34.3,197.3C68.6,203,137,213,206,208C274.3,203,343,181,411,186.7C480,192,549,224,617,250.7C685.7,277,754,299,823,277.3C891.4,256,960,192,1029,176C1097.1,160,1166,192,1234,218.7C1302.9,245,1371,267,1406,277.3L1440,288L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+            <div className="h-max bg-[#9769A5]">
                 {/* Top header */}
                 <header className="mx-auto max-w-6xl px-6 py-10 text-white">
                     <motion.h1
@@ -47,11 +47,12 @@ export default function LetsConnect() {
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.05 }}
-                        className="mx-auto mt-3 max-w-2xl text-2xl text-center text-pretty text-white/90"
+                        className="mx-auto mt-3 max-w-2xl text-2xl text-center text-pretty text-white/90 relative"
                     >
                         {
                             "We'd love to hear from you! Whether you have questions about our programs or want to schedule a visit, our team is here to help."
                         }
+                        <img src="./handHeart.svg" className="w-64 absolute left-[-200px] top-[-90px]" />
                     </motion.p>
                 </header>
 

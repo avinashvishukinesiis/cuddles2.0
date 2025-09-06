@@ -2,7 +2,7 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-
+import Link from "next/link"
 const Path = (props: any) => (
   <motion.path
     fill="transparent"
@@ -20,13 +20,13 @@ const NavBar = () => {
     <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:py-2">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
+          <Link href='/' className="flex items-center">
               <img src="./cuddles_logo.svg" alt="cuddles logo" />
-          </div>
+          </Link>
           <nav className="hidden md:flex space-x-8">
-            <a href="#" className="text-black hover:text-purple font-bold">
+            <Link href="/AboutUs" className="text-black hover:text-purple font-bold">
               About Us
-            </a>
+            </Link>
             <a href="#" className="text-black hover:text-purple font-bold">
               Curriculum
             </a>
