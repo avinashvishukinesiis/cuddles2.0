@@ -19,7 +19,7 @@ export default function RootLayoutClient({ children }: RootLayoutClientProps) {
         pathname.startsWith(route)
     );
 
-    const shouldShowFAQ = pathname.toLowerCase() !== "/parternerships"; 
+    const shouldShowFAQ = pathname.toLowerCase() !== "/partnerships"; 
 
     return (
         <>
