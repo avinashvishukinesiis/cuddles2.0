@@ -19,13 +19,15 @@ export default function RootLayoutClient({ children }: RootLayoutClientProps) {
         pathname.startsWith(route)
     );
 
+    const shouldShowFAQ = pathname.toLowerCase() !== "/parternerships"; 
+
     return (
         <>
             <NavBar />
             <main className={`h-max min-h-[200px] md:min-h-[500px] ${shouldShowHeaderFooter ? "mt-[65px] md:mt-[81px]" : ""} box-border`}>
                 <MotionWrapper>
                     {children}
-                    <FAQSection/>
+                    {shouldShowFAQ && <FAQSection />}
                     <Footer />
                 </MotionWrapper>
             </main>

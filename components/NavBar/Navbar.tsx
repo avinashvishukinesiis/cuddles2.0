@@ -1,8 +1,10 @@
 "use client"
 /* eslint-disable  @typescript-eslint/no-explicit-any */
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
+
 const Path = (props: any) => (
   <motion.path
     fill="transparent"
@@ -13,40 +15,60 @@ const Path = (props: any) => (
   />
 )
 
+const NAV_ITEMS = [
+  { label: "About Us", href: "/AboutUs" },
+  { label: "Curriculum", href: "/Curriculum" },
+  { label: "Partnerships", href: "/Partnerships" },
+  { label: "Safety", href: "/Safety" },
+  { label: "Assistance", href: "/Assistance" },
+  { label: "Contact Us", href: "/Contact" },
+]
+
 const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  // Optional: prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add("overflow-hidden")
+    } else {
+      document.body.classList.remove("overflow-hidden")
+    }
+  }, [isMobileMenuOpen])
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:py-2">
         <div className="flex justify-between items-center h-16">
-          <Link href='/' className="flex items-center">
-              <img src="./cuddles_logo.svg" alt="cuddles logo" />
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/cuddles_logo.svg"
+              alt="cuddles logo"
+              width={120}
+              height={40}
+              priority
+            />
           </Link>
+
+          {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="/AboutUs" className="text-black hover:text-purple font-bold">
-              About Us
-            </Link>
-            <a href="#" className="text-black hover:text-purple font-bold">
-              Curriculum
-            </a>
-            <a href="#" className="text-black hover:text-purple font-bold">
-              Partnerships
-            </a>
-            <a href="#" className="text-black hover:text-purple font-bold">
-              Safety
-            </a>
-            <a href="#" className="text-black hover:text-purple font-bold">
-              Assistance
-            </a>
-            <a href="#" className="text-black hover:text-purple font-bold">
-              Contact us
-            </a>
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-black hover:text-purple font-bold"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
           {/* Hamburger / Cross Button */}
           <button
             className="md:hidden bg-transparent text-black"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <motion.svg
@@ -87,6 +109,7 @@ const NavBar = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
+              id="mobile-menu"
               className="md:hidden overflow-hidden"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
@@ -94,48 +117,16 @@ const NavBar = () => {
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-                <a
-                  href="#"
-                  className="block px-3 py-2 text-black hover:text-purple font-bold hover:bg-gray-50 rounded-md"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  About Us
-                </a>
-                <a
-                  href="#"
-                  className="block px-3 py-2 text-black hover:text-purple font-bold hover:bg-gray-50 rounded-md"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Curriculum
-                </a>
-                <a
-                  href="#"
-                  className="block px-3 py-2 text-black hover:text-purple font-bold hover:bg-gray-50 rounded-md"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Partnerships
-                </a>
-                <a
-                  href="#"
-                  className="block px-3 py-2 text-black hover:text-purple font-bold hover:bg-gray-50 rounded-md"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Safety
-                </a>
-                <a
-                  href="#"
-                  className="block px-3 py-2 text-black hover:text-purple font-bold hover:bg-gray-50 rounded-md"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Assistance
-                </a>
-                <a
-                  href="#"
-                  className="block px-3 py-2 text-black hover:text-purple font-bold hover:bg-gray-50 rounded-md"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Contact us
-                </a>
+                {NAV_ITEMS.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block px-3 py-2 text-black hover:text-purple font-bold hover:bg-gray-50 rounded-md"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
             </motion.div>
           )}
