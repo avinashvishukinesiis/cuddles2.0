@@ -5,7 +5,7 @@ import LetsBuild from '@/components/Parternerships/LetsBuild/LetsBuild'
 import ParternerWith from '@/components/Parternerships/ParternerWith/ParternerWith'
 import React from 'react'
 
-const AboutUs = () => {
+const Parternerships = () => {
   return (
      <div className="flex flex-col font-ohno">
       <HeroSection/>
@@ -17,4 +17,4 @@ const AboutUs = () => {
   )
 }
 
-export default AboutUs
+export default Parternerships

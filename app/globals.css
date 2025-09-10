@@ -39,3 +39,11 @@
 .about-hero-bg {
     background-image: url('/About_hero_image.jpg');
 }
+
+.curriculum-hero-bg {
+    background-image: url('/classroom.jpg');
+}
+
+.assistance-hero-bg {
+    background-image: url('/assitance_hero_image.jpg');
+}
