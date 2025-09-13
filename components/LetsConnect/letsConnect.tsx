@@ -21,13 +21,48 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 export default function LetsConnect() {
     const [submitting, setSubmitting] = useState(false)
+    const [formData, setFormData] = useState({
+        child_name: "",
+        age: "",
+        guardian: "",
+        phone: "",
+        email: "",
+        comments: "",
+    })
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target
+        setFormData((prev) => ({ ...prev, [name]: value }))
+    }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setSubmitting(true)
-        // Simulate submit
-        setTimeout(() => setSubmitting(false), 1200)
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            })
+
+            const result = await res.json()
+            if (result.success) {
+                alert("✅ Form submitted successfully!")
+                setFormData({ child_name: "", age: "", guardian: "", phone: "", email: "", comments: "" }) // reset
+            } else {
+                alert("❌ Failed: " + result.message)
+            }
+        } catch (err) {
+            console.error("Error submitting form:", err)
+            alert("❌ Something went wrong!")
+        } finally {
+            setSubmitting(false)
+        }
     }
+
+
 
     return (
         <section>
@@ -92,6 +127,8 @@ export default function LetsConnect() {
                                             <input
                                                 id="child_name"
                                                 name="child_name"
+                                                value={formData.child_name}
+                                                onChange={handleChange}
                                                 required
                                                 placeholder="Your name"
                                                 className="w-full rounded-md border border-[#9769A5] bg-white px-4 py-2.5 text-sm text-slate-800 placeholder:text-[#9769A5] outline-none focus:border-[#9769A5] focus:ring-2 focus:ring-purple-200 transition"
@@ -102,6 +139,8 @@ export default function LetsConnect() {
                                             <input
                                                 id="age"
                                                 name="age"
+                                                value={formData.age}
+                                                onChange={handleChange}
                                                 type="number"
                                                 min={0}
                                                 required
@@ -123,6 +162,8 @@ export default function LetsConnect() {
                                             <input
                                                 id="guardian"
                                                 name="guardian"
+                                                value={formData.guardian}
+                                                onChange={handleChange}
                                                 required
                                                 placeholder="Full name"
                                                 className="w-full rounded-md border border-[#9769A5] bg-white px-4 py-2.5 text-sm text-slate-800 placeholder:text-[#9769A5] outline-none focus:border-[#9769A5] focus:ring-2 focus:ring-purple-200 transition"
@@ -133,6 +174,8 @@ export default function LetsConnect() {
                                             <input
                                                 id="phone"
                                                 name="phone"
+                                                value={formData.phone}
+                                                onChange={handleChange}
                                                 type="tel"
                                                 required
                                                 placeholder="Number"
@@ -144,6 +187,8 @@ export default function LetsConnect() {
                                             <input
                                                 id="email"
                                                 name="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
                                                 type="email"
                                                 required
                                                 placeholder="youremail@gmail.com"
@@ -163,6 +208,8 @@ export default function LetsConnect() {
                                         <textarea
                                             id="comments"
                                             name="comments"
+                                            value={formData.comments}
+                                            onChange={handleChange}
                                             rows={3}
                                             placeholder="What are the open hours"
                                             className="w-full rounded-md border border-[#9769A5] bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-[#9769A5] outline-none focus:border-[#9769A5] focus:ring-2 focus:ring-purple-200 transition"

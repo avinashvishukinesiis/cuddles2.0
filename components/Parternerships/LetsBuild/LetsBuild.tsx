@@ -21,13 +21,45 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 export default function LetsBuild() {
     const [submitting, setSubmitting] = useState(false)
+    const [formData, setFormData] = useState({
+            Type_of_partnership: "",
+            Category: "",
+            Business_full_name: "",
+            phone: "",
+            email: "",
+            comments: "",
+        })
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        setSubmitting(true)
-        // Simulate submit
-        setTimeout(() => setSubmitting(false), 1200)
-    }
+        const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+                const { name, value } = e.target
+                setFormData((prev) => ({ ...prev, [name]: value }))
+            }
+
+       const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault()
+            setSubmitting(true)
+    
+            try {
+                const res = await fetch("/api/build", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData),
+                })
+    
+                const result = await res.json()
+                if (result.success) {
+                    alert("✅ Form submitted successfully!")
+                    setFormData({ Type_of_partnership: "", Category: "", Business_full_name: "", phone: "", email: "", comments: "" }) // reset
+                } else {
+                    alert("❌ Failed: " + result.message)
+                }
+            } catch (err) {
+                console.error("Error submitting form:", err)
+                alert("❌ Something went wrong!")
+            } finally {
+                setSubmitting(false)
+            }
+        }
 
     return (
         <section>
@@ -80,6 +112,8 @@ export default function LetsBuild() {
                                             <input
                                                 id="Type_of_partnership"
                                                 name="Type_of_partnership"
+                                                value={formData.Type_of_partnership}
+                                                onChange={handleChange}
                                                 required
                                                 placeholder="Daycare"
                                                 className="w-full rounded-md border border-[#9769A5]  px-4 py-2.5 text-sm text-slate-800 placeholder:text-[#9769A5] outline-none focus:border-[#9769A5] focus:ring-2 focus:ring-purple-200 transition"
@@ -90,7 +124,8 @@ export default function LetsBuild() {
                                             <input
                                                 id="Category"
                                                 name="Category"
-                                                type="number"
+                                                value={formData.Category}
+                                                onChange={handleChange}
                                                 min={0}
                                                 required
                                                 placeholder="MNC"
@@ -111,6 +146,8 @@ export default function LetsBuild() {
                                             <input
                                                 id="Business_full_name"
                                                 name="Business_full_name"
+                                                value={formData.Business_full_name}
+                                                onChange={handleChange}
                                                 required
                                                 placeholder="Cuddles"
                                                 className="w-full rounded-md border border-[#9769A5]  px-4 py-2.5 text-sm text-slate-800 placeholder:text-[#9769A5] outline-none focus:border-[#9769A5] focus:ring-2 focus:ring-purple-200 transition"
@@ -121,6 +158,8 @@ export default function LetsBuild() {
                                             <input
                                                 id="phone"
                                                 name="phone"
+                                                value={formData.phone}
+                                                onChange={handleChange}
                                                 type="tel"
                                                 required
                                                 placeholder="Number"
@@ -132,6 +171,8 @@ export default function LetsBuild() {
                                             <input
                                                 id="email"
                                                 name="email"
+                                                value={formData.email}
+                                                onChange={handleChange}
                                                 type="email"
                                                 required
                                                 placeholder="youremail@gmail.com"
@@ -151,6 +192,8 @@ export default function LetsBuild() {
                                         <textarea
                                             id="comments"
                                             name="comments"
+                                            value={formData.comments}
+                                                onChange={handleChange}
                                             rows={3}
                                             placeholder="Incentives or commission"
                                             className="w-full rounded-md border border-[#9769A5]  px-4 py-3 text-sm text-slate-800 placeholder:text-[#9769A5] outline-none focus:border-[#9769A5] focus:ring-2 focus:ring-purple-200 transition"
