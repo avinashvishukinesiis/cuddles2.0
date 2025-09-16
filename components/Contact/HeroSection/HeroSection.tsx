@@ -30,7 +30,7 @@ const HeroSection = () => {
                     </h2>
 
                     <div className='w-full flex flex-col gap-6 md:px-[5vw]'>
-                        <div className='grid md:grid-cols-5 md:grid-rows-2 grid-cols-1 gap-8'>
+                        <div className='grid md:grid-cols-6 md:grid-rows-2 grid-cols-1 gap-8'>
                             <div className='md:col-span-3 md:row-span-2 border border-[#DE627D] text-[#DE627D] rounded-2xl flex overflow-hidden'>
                                 <div className='flex flex-col gap-6 w-[800px] p-6'>
                                     <p className='font-extrabold'>Salarpuria Greenage Centre</p>
@@ -46,14 +46,14 @@ const HeroSection = () => {
                                     className="w-full h-full"
                                 ></iframe>
                             </div>
-                            <div className='md:row-span-1 md:col-span-2 border border-[#D5973A] text-[#D5973A] font-extrabold rounded-2xl flex justify-between items-center p-6'>
+                            <div className='md:row-span-1 md:col-span-3 border border-[#D5973A] text-[#D5973A] font-extrabold rounded-2xl flex justify-between items-center p-6'>
                                 <IoCall className='w-[25px] h-[25px]'/>
                                 <div className='flex flex-col'>
                                     <p>+91-80503 07665</p>
                                     <p>+91-90360 90909</p>
                                 </div>
                             </div>
-                            <div className='md:row-span-1 md:col-span-2 border border-[#4AA6B1] text-[#4AA6B1] font-extrabold rounded-2xl flex justify-between items-center p-6'>
+                            <div className='md:row-span-1 md:col-span-3 border border-[#4AA6B1] text-[#4AA6B1] font-extrabold rounded-2xl flex justify-between items-center p-6'>
                                 <HiMail className='w-[25px] h-[25px]'/>
                                 <p>greenage@cuddles.co.in</p>
                             </div>

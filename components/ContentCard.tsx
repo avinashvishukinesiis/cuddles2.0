@@ -11,7 +11,7 @@ interface ContentCardProps {
 
 const titleColorClasses = {
   purple: "text-purple",
-  blue: "text-blue-600",
+  blue: "text-blue",
   pink: "text-pink-600",
   teal: "text-teal-600",
   green: "text-green-600",
@@ -28,7 +28,7 @@ export function ContentCard({
 }: ContentCardProps) {
   return (
     <div
-      className={`bg-white rounded-2xl overflow-hidden shadow-sm border border-${titleColorClasses[titleColor]} hover:shadow-md transition-shadow duration-200 h-full ${className}`}
+      className={`bg-white rounded-2xl overflow-hidden shadow-sm border border-${titleColor} hover:shadow-md transition-shadow duration-200 h-full ${className}`}
     >
       <div className="aspect-[4/2] relative overflow-hidden">
         <Image src={image || "/placeholder.svg"} alt={imageAlt} fill className="object-cover" />

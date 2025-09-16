@@ -9,6 +9,7 @@
 
 @theme {
     --color-purple: #9769A5;
+    --color-blue: #4AA6B1;
 }
 
 :root {
@@ -50,4 +51,8 @@
 
 .contactroom-hero-bg {
     background-image: url('/contactroom.jpg');
+}
+
+.hallroom-hero-bg {
+    background-image: url('/hallroom.jpg');
 }
