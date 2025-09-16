@@ -33,7 +33,7 @@ export function ContentCard({
       <div className="aspect-[4/2] relative overflow-hidden">
         <Image src={image || "/placeholder.svg"} alt={imageAlt} fill className="object-cover" />
       </div>
-      <div className={`p-6 border-t border-${titleColorClasses[titleColor]}`}>
+      <div className={`p-6 border-t border-${titleColor}`}>
         <h3 className={`text-lg font-semibold mb-3 ${titleColorClasses[titleColor]}`}>{title}</h3>
         <p className={`${titleColorClasses[titleColor]} text-sm leading-relaxed`}>{description}</p>
       </div>
