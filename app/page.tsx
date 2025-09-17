@@ -1,3 +1,4 @@
+import ActivityZone from "@/components/HomePage/ActivityZone/ActivityZone";
 import CuddlesProgram from "@/components/HomePage/CuddlesProgram/CuddlesProgram";
 import { EarlyEducationSection } from "@/components/HomePage/Early-education/EarlyEducation";
 import HeroSection from "@/components/HomePage/HeroSection/HeroSection";
@@ -13,6 +14,7 @@ export default function Home() {
       <HeroSection/>
       <EarlyEducationSection/>
       <CuddlesProgram/>
+      <ActivityZone/>
       <Include/>
       <LetsConnect/>
      </div>
