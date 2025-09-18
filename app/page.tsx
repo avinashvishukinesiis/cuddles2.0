@@ -4,6 +4,7 @@ import { EarlyEducationSection } from "@/components/HomePage/Early-education/Ear
 import HeroSection from "@/components/HomePage/HeroSection/HeroSection";
 import Include from "@/components/HomePage/Include/Include";
 import LetsConnect from "@/components/LetsConnect/letsConnect";
+import Testimonial from "@/components/Testimonial/Testimonial";
 
 
 
@@ -16,6 +17,7 @@ export default function Home() {
       <CuddlesProgram/>
       <ActivityZone/>
       <Include/>
+      <Testimonial/>
       <LetsConnect/>
      </div>
   );
